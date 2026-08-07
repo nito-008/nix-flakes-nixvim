@@ -1,5 +1,5 @@
 # lsp.nix — Language Server Protocol and language-specific plugin configuration.
-# Enables 28 language servers via nvim-lspconfig (NixVim), lean.nvim for Lean 4,
+# Enables 29 language servers via nvim-lspconfig (NixVim), lean.nvim for Lean 4,
 # and cornelis for interactive Agda development.
 # r_language_server, julials, and ocamllsp use package = null (external dependencies required).
 # mdx_analyzer is built from the npm tarball using buildNpmPackage.
@@ -59,6 +59,7 @@ in
   #   marksman           : Markdown                (reference: https://github.com/artempyanykh/marksman)
   #   bashls             : shell scripts           (reference: https://github.com/bash-lsp/bash-language-server)
   #   ts_ls              : TypeScript / JavaScript (reference: https://github.com/typescript-language-server/typescript-language-server)
+  #   denols             : Deno                    (reference: https://github.com/denoland/deno)
   #   rust_analyzer      : Rust                    (reference: https://github.com/rust-lang/rust-analyzer)
   #   r_language_server  : R                       (reference: https://github.com/REditorSupport/languageserver)
   #   ocamllsp           : OCaml                   (reference: https://github.com/ocaml/ocaml-lsp)
@@ -101,6 +102,8 @@ in
       };
       # TypeScript / JavaScript language server
       ts_ls.enable = true;
+      # Deno language server
+      denols.enable = true;
       # R language server
       # package = null: relies on R (with languageserver) provided by the project's R flake
       r_language_server = {
@@ -338,4 +341,3 @@ in
     }
   ];
 }
-
