@@ -54,7 +54,7 @@ Configuration is split into three categories under `config/libs/`:
 
 | File             | Contents                                                                                                                                                                                 |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `lsp.nix`        | nvim-lspconfig (28 language servers) + lean.nvim + cornelis (Agda)                                                                                                                       |
+| `lsp.nix`        | nvim-lspconfig (29 language servers) + lean.nvim + cornelis (Agda)                                                                                                                       |
 | `lspsaga.nix`    | lspsaga.nvim rich LSP UI + floating terminal                                                                                                                                             |
 | `format.nix`     | conform.nvim format-on-save (oxfmt for JS/TS/JSON/YAML/HTML/CSS/Markdown/MDX, prettier for Astro, latexindent for LaTeX, mermaidfmt for Mermaid) + nvim-lint async linting + texliveFull |
 | `treesitter.nix` | nvim-treesitter syntax highlighting (38 parsers, MDX built from source, Mermaid and dot from nixpkgs builtGrammars)                                                                      |
@@ -134,4 +134,3 @@ grep -r 'key\s*=' config/
 ```
 
 Check for conflicts across all `config/**/*.nix` files before proposing a key. Never suggest a key that is already in use.
-
