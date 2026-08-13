@@ -56,6 +56,7 @@
   # "tokyonight" which is not in bat's theme directory.
   extraConfigLua = ''
     vim.env.BAT_THEME = "TwoDark"
+    if vim.env.SSH_TTY then vim.g.clipboard = "osc52" end
   '';
 
   # telescope.nvim
