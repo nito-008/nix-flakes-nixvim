@@ -86,6 +86,7 @@ in
   #   dotls              : Graphviz DOT            (reference: https://github.com/nikeee/dot-language-server)
   plugins.lsp = {
     enable = true;
+    inlayHints = true;
     servers = {
       # Nix language server
       nil_ls.enable = true;
