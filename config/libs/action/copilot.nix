@@ -1,5 +1,5 @@
 # copilot.nix — GitHub Copilot inline suggestions using copilot.lua.
-# Auto-trigger enabled; Tab accepts suggestions via a custom keymap to avoid <Ignore> insertion.
+# Auto-trigger enabled; Tab accepts suggestions or jumps to the next snippet placeholder.
 {
   # copilot.lua
   # reference: https://github.com/zbirenbaum/copilot.lua
@@ -7,7 +7,7 @@
   # Provides GitHub Copilot AI suggestions in insert mode.
   #
   # Keymaps:
-  # <Tab>   : accept suggestion or insert tab (Insert)
+  # <Tab>   : accept suggestion, jump to the next snippet placeholder, or insert tab (Insert)
   # <A-]>   : next suggestion (Insert)
   # <A-[>   : previous suggestion (Insert)
   # <C-]>   : dismiss suggestion (Insert)
@@ -32,7 +32,7 @@
     };
   };
 
-  # Accept copilot suggestion with Tab, fallback to normal Tab.
+  # Accept copilot suggestion with Tab, then try a snippet jump before normal Tab.
   # keybind: Tab
   #
   # Why this custom keymap is needed:
@@ -77,12 +77,14 @@
         function()
           if require("copilot.suggestion").is_visible() then
             require("copilot.suggestion").accept()
+          elseif vim.snippet.active({ direction = 1 }) then
+            vim.snippet.jump(1)
           else
             vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
           end
         end
       '';
-      options.desc = "Accept Copilot suggestion or insert tab";
+      options.desc = "Accept Copilot suggestion, jump snippet, or insert tab";
     }
   ];
 }
